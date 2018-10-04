@@ -1,0 +1,38 @@
+# -*- coding: utf-8 -*-
+"""
+Created on Sun Oct 4 8:21:00 2018
+
+@author: Alan Jerry Pan, CPA, CSc
+@affiliation: Shanghai Jiaotong University
+
+Program framework for Depth-First-Search (DFS).
+
+Suggested citation as computer software for reference:
+Pan, Alan J. (2018). Search Algorithms [Computer software]. Github repository <https://github.com/alanjpan/Search-Algorithms>
+
+Note this software's license is GNU GPLv3.
+"""
+
+def DFS(Graph, initialState):
+    paths = Graph.successors(Graph, initialState)
+    for i in paths:
+        print(i)
+        print(paths)
+        DFS(Graph, i)
+
+class Graph:
+    def successors(self, state):
+        if state==0: 
+            return [1, 2]
+        if state==1:
+            return [2, 3, 4]
+        if state==2: 
+            return [4]
+        if state==3: 
+            return [5]
+        if state==4: 
+            return [3, 5]
+        if state==5: 
+            return []
+    def isGoal(self, state):
+        return state==5
