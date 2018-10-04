@@ -1,3 +1,18 @@
+# -*- coding: utf-8 -*-
+"""
+Created on Sun Oct 4 8:16:00 2018
+
+@author: Alan Jerry Pan, CPA, CSc
+@affiliation: Shanghai Jiaotong University
+
+Program framework for Breadth-First-Search (BFS).
+
+Suggested citation as computer software for reference:
+Pan, Alan J. (2018). Search Algorithms [Computer software]. Github repository <https://github.com/alanjpan/Search-Algorithms>
+
+Note this software's license is GNU GPLv3.
+"""
+
 def BFS(Graph, initialState):
     queue = []
     paths = Graph.successors(Graph, initialState)    
