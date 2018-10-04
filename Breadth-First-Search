@@ -1,0 +1,31 @@
+def BFS(Graph, initialState):
+    queue = []
+    paths = Graph.successors(Graph, initialState)    
+    for i in paths:
+        queue.append(i)
+    
+    while len(queue) > 0:
+        q = queue[0]
+        paths = Graph.successors(Graph, q)
+        print(q)
+        for i in paths:
+            queue.append(i)
+        queue.pop(0)
+        print(queue)
+
+class Graph:
+    def successors(self, state):
+        if state==0: 
+            return [1, 2]
+        if state==1:
+            return [2, 3, 4]
+        if state==2: 
+            return [4]
+        if state==3: 
+            return [5]
+        if state==4: 
+            return [3, 5]
+        if state==5: 
+            return []
+    def isGoal(self, state):
+        return state==5
