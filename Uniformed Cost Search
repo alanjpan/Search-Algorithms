@@ -1,0 +1,55 @@
+# -*- coding: utf-8 -*-
+"""
+Created on Thu Oct 4 9:02:00 2018
+
+@author: Alan Jerry Pan, CPA, CSc
+@affiliation: Shanghai Jiaotong University
+
+Program framework for Uniformed Cost Search (UCS).
+
+Suggested citation as computer software for reference:
+Pan, Alan J. (2018). Search Algorithms [Computer software]. Github repository <https://github.com/alanjpan/Search-Algorithms>
+
+Note this software's license is GNU GPLv3.
+"""
+
+def UCS(ValuedGraph, initialState):
+    queue = []
+    paths = ValuedGraph.successors(ValuedGraph, initialState)
+    for i in paths:
+        queue.append(i)
+
+    while len(queue) > 0:
+        path = queue[0][0]
+        low = queue[0][1]
+        remove = 0
+        
+        for i in range(len(queue)):
+            if low > queue[i][1]:
+                path = queue[i][0]
+                low = queue[i][1]
+                remove = i
+        print(path)
+
+        paths = ValuedGraph.successors(ValuedGraph, path)
+        print(paths)
+        for i in paths:
+            queue.append(i)
+        queue.pop(remove)
+
+class ValuedGraph:
+    def successors(self, state):
+        if state==0:
+            return [(1, 2), (2, 3)]
+        if state==1:
+            return [(2, 2), (3, 5), (4, 1)]
+        if state==2:
+            return [(4, 1)]
+        if state==3:
+            return [(5, 2)]
+        if state==4:
+            return [(3, 2), (5, 1)]
+        if state==5:
+            return []
+    def isGoal(self, state):
+        return state==5
