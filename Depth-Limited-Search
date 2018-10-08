@@ -1,0 +1,30 @@
+# -*- coding: utf-8 -*-
+"""
+Created on Thu Oct 8 9:00:00 2018
+
+@author: Alan Jerry Pan, CPA, CSc
+@affiliation: Shanghai Jiaotong University
+
+Program framework for Breadth-First-Search (BFS).
+
+Suggested citation as computer software for reference:
+Pan, Alan J. (2018). Search Algorithms [Computer software]. Github repository <https://github.com/alanjpan/Search-Algorithms>
+
+Note this software's license is GNU GPLv3.
+"""
+
+
+
+def DLS(Graph, initialState, depthLimit):
+    DLSrecurse(Graph, initialState, depthLimit)
+def DLSrecurse(Graph, state, depthLimit):
+    if Graph.isGoal(Graph, state):
+        return state
+    elif depthLimit < 1:
+        return state
+    else:
+        paths = Graph.successors(Graph, state)
+        print(paths)
+        for s in paths:
+            print(s)
+            DLSrecurse(Graph, s, depthLimit-1)
